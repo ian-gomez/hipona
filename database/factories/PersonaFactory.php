@@ -36,10 +36,10 @@ $factory->define(App\Persona::class, function (Faker\Generator $faker) {
         //'password' => $password ?: $password = bcrypt('secret'),
         'edad' => $faker->date('d/m/Y'),
         'telefono' => $faker->phoneNumber(),
-        'ciudadProcedencia' => $faker->state(),
-        'areaConocimiento' => $faker->text(15),
-        'nivelEjerce' => $faker->randomElement(array ('Inicial','Primario','Secundario','Terciario','Universitario')),
-        'estudianteActual' => $faker->randomElement(array ('Si', 'No')),
+        'ciudad_procedencia' => $faker->state(),
+        'area_conocimiento' => $faker->text(15),
+        'nivel_ejerce' => $faker->randomElement(array ('Inicial','Primario','Secundario','Terciario','Universitario')),
+        'estudiante_actual' => $faker->randomElement(array ('Si', 'No')),
         'categoria_id' => App\Categoria::all()->random()->id,
     ];
 }); 
