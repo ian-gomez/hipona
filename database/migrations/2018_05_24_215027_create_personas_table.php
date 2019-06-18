@@ -24,8 +24,7 @@ class CreatePersonasTable extends Migration
             $table->string('ciudad_procedencia');
             $table->string('area_conocimiento');
             $table->string('nivel_ejerce');
-            $table->string('estudiante_actual');
-            $table->boolean('administrador')->nullable();
+            $table->boolean('estudiante_actual');
             $table->bigInteger('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categorias');
             $table->timestamps();
@@ -33,7 +32,7 @@ class CreatePersonasTable extends Migration
     }
 
 
- 
+
     /**
      * Reverse the migrations.
      *

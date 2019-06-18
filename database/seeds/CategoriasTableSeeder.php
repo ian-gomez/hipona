@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Categoria;
 
 class CategoriasTableSeeder extends Seeder
 {
@@ -12,18 +11,11 @@ class CategoriasTableSeeder extends Seeder
      */
     public function run()
     {
-        //factory(App\Categoria::class, 1)->create();
-
         App\Categoria::create([
             'descripcion' => 'Asistente',
-
-        ]);
-
-
-
+            ]);
         App\Categoria::create([
         	'descripcion' => 'Expositor',
-
-        ]);
+            ]);
     }
 }
