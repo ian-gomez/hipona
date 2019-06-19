@@ -1849,6 +1849,7 @@ return array(
     'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => $vendorDir . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
     'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => $vendorDir . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
     'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => $vendorDir . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
+    'Jornada_PersonaTableSeeder' => $baseDir . '/database/seeds/Jornada_PersonaTableSeeder.php',
     'JornadasTableSeeder' => $baseDir . '/database/seeds/JornadasTableSeeder.php',
     'JsonSerializable' => $vendorDir . '/nesbot/carbon/src/JsonSerializable.php',
     'Laravel\\Dusk\\Browser' => $vendorDir . '/laravel/dusk/src/Browser.php',

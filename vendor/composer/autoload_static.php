@@ -2321,6 +2321,7 @@ class ComposerStaticInit8e79136ade100d7d87496fe38e123abc
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/Highlighter.php',
+        'Jornada_PersonaTableSeeder' => __DIR__ . '/../..' . '/database/seeds/Jornada_PersonaTableSeeder.php',
         'JornadasTableSeeder' => __DIR__ . '/../..' . '/database/seeds/JornadasTableSeeder.php',
         'JsonSerializable' => __DIR__ . '/..' . '/nesbot/carbon/src/JsonSerializable.php',
         'Laravel\\Dusk\\Browser' => __DIR__ . '/..' . '/laravel/dusk/src/Browser.php',
