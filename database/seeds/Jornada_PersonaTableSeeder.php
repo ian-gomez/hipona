@@ -11,6 +11,6 @@ class Jornada_PersonaTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Jornada_Persona::class, 20)->create();
+        factory(App\Jornada_Persona::class, 50)->create();
     }
 }

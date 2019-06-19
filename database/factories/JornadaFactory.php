@@ -11,5 +11,6 @@ $factory->define(Jornada::class, function (Faker $faker) {
         'ubicacion' => $faker->city,
         'fecha_inicio' => $faker->dateTimeBetween($startDate = 'yesterday', $endDate = 'yesterday'),
         'fecha_fin' => $faker->dateTimeBetween($startDate = 'today', $endDate = 'today'),
+        'estado' => $faker->boolean($chanceOfGettingTrue = 50),
     ];
 });
