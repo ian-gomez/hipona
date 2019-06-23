@@ -3,17 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Configuracion;
 
-class HomeController extends Controller
+class ConfigController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id_jornada)
     {
-        return("En mantenimiento");
+        $jornada = Configuracion::where('jornada_id', $id_jornada)->get();
+        return json_encode($jornada);
     }
 
     /**
@@ -45,7 +47,6 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -66,9 +67,12 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $config = Configuracion::where('jornada_id', $request->get('jornada_id'))->first();
+        $config->cantidad_asistencias = $request->get('cantidad_asistencias'); 
+        $config->tolerancia = $request->get('tolerancia');
+        $config->save();
     }
 
     /**

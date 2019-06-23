@@ -60,14 +60,16 @@
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('http://www.sedessapientiae.edu.ar/index-2.htm') }}">
                      <!--   {{ config('app.name', 'Sedes Sapientiae Jornada') }}-->
-                        Administrador Jornadas
+                        Jornada Sedes
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @if (!Auth::guest())
+                          <li><a href="/jornadas">Administrar jornadas</a></li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
