@@ -14,7 +14,7 @@
     margin-top: 40px;
   }
 </style>
-<body style="background-color: #e0f1f1">
+<body>
 <div class="uper">
   @if(session()->get('success'))
     <div class="alert alert-success">
@@ -26,8 +26,8 @@
      <a href="{{ url('/jornadas/create') }}" class="btn btn-success">Crear jornada</a><br><br>
   </div>
 
-  <table id="table" class="table">
-    <thead>
+  <table id="table" class="table table-responsive table-hover">
+    <thead style="background-color: #e3ebff;">
         <tr>
           <td>Título</td>
           <td>Acción</td>
@@ -57,6 +57,26 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal" id="modal_confirm" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmación</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Desea eliminar esta jornada?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btneliminar">Eliminar</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div>
@@ -91,22 +111,25 @@
       });
 
       $('body').on('click', '.eliminar', function(){
+        $('#modal_confirm').modal('show');
         var jornada_id = $(this).data("id");
-        $.ajax({
-          headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-          },
-          type: "POST",
-          url: "jornadas/"+jornada_id,
-          data:   {
-            "jornada_id": jornada_id,
-            "_method": 'DELETE',
-          },
-          success: function () { 
-            alert("Jornada eliminada correctamente");
-            location.reload();
-          }
-        });
+        $('body').on('click', '.btneliminar', function(){
+          $.ajax({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            type: "POST",
+            url: "jornadas/"+jornada_id,
+            data:   {
+              "jornada_id": jornada_id,
+              "_method": 'DELETE',
+            },
+            success: function () { 
+              alert("Jornada eliminada correctamente");
+              location.reload();
+            }
+          });
+        })
       });
 
       $('body').on('click', '.config', function(){
@@ -117,13 +140,8 @@
           dataType: 'json',
           success: function(data){
             $('#id_jornada').val(jornada_id);
-            if(data.length != 0){  //Si ya existe una configuración
-              $('#cantidad_asistencias').val(data[0].cantidad_asistencias);
-              $('#tolerancia').val(data[0].tolerancia);
-            }else{
-              $('#cantidad_asistencias').val('');
-              $('#tolerancia').val('');
-            }
+            $('#cantidad_asistencias').val(data[0].cantidad_asistencias);
+            $('#tolerancia').val(data[0].tolerancia);
             $('#modal_config').modal('show');
           }
         });
