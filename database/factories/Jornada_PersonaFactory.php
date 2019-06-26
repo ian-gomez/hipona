@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Jornada_Persona::class, function (Faker $faker) {
     return [
         'jornada_id' => App\Jornada::all()->random()->id,
-        'persona_id' => $faker->randomElement(App\Persona::pluck('id', 'id')->toArray()),
+        'persona_id' => $faker->unique()->randomElement(App\Persona::pluck('id', 'id')->toArray()),
     ];
 });

@@ -478,6 +478,7 @@ class ComposerStaticInit8e79136ade100d7d87496fe38e123abc
     );
 
     public static $classMap = array (
+        'App\\Asistencia' => __DIR__ . '/../..' . '/app/Asistencia.php',
         'App\\Categoria' => __DIR__ . '/../..' . '/app/Categoria.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
@@ -497,6 +498,7 @@ class ComposerStaticInit8e79136ade100d7d87496fe38e123abc
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Jornada' => __DIR__ . '/../..' . '/app/Jornada.php',
+        'App\\Jornada_Persona' => __DIR__ . '/../..' . '/app/Jornada_Persona.php',
         'App\\Mail\\Bienvenido' => __DIR__ . '/../..' . '/app/Mail/Bienvenido.php',
         'App\\Pais' => __DIR__ . '/../..' . '/app/Pais.php',
         'App\\Persona' => __DIR__ . '/../..' . '/app/Persona.php',
@@ -506,6 +508,7 @@ class ComposerStaticInit8e79136ade100d7d87496fe38e123abc
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'AsistenciasTableSeeder' => __DIR__ . '/../..' . '/database/seeds/AsistenciasTableSeeder.php',
         'Barryvdh\\DomPDF\\Facade' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/Facade.php',
         'Barryvdh\\DomPDF\\PDF' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/PDF.php',
         'Barryvdh\\DomPDF\\ServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-dompdf/src/ServiceProvider.php',
