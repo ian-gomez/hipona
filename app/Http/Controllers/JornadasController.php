@@ -124,5 +124,6 @@ class JornadasController extends Controller
     public function destroy($id)
     {
         $jornada = Jornada::find($id)->delete();
+        DB::delete('DELETE FROM configuracion WHERE jornada_id = ?', [$id]);
     }
 }
