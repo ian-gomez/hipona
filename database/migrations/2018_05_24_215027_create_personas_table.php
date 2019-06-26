@@ -27,7 +27,6 @@ class CreatePersonasTable extends Migration
             $table->boolean('estudiante_actual');
             $table->bigInteger('categoria_id')->unsigned();
             $table->foreign('categoria_id')->references('id')->on('categorias');
-            $table->timestamps();
         });
     }
 
