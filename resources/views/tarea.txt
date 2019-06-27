@@ -1,5 +1,0 @@
--- Generar pantalla, al presionar el boton generar pdf. 
-
--- campo input y boton "exportar"
-
--- Resultado filtrar por apellidos

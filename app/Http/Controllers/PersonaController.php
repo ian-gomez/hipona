@@ -60,9 +60,9 @@ class PersonaController extends Controller
 
                 }
                 $personas-> telefono= $request->telefono;
-                $personas-> areaConocimiento = $request->areaCon;
-                $personas-> ciudadProcedencia = $request->ciudadP;
-                $personas-> estudianteActual = $request->estudianteActual;
+                $personas-> area_conocimiento = $request->areaCon;
+                $personas-> ciudad_procedencia = $request->ciudadP;
+                $personas-> estudiante_actual = $request->estudianteActual;
                 if (\Auth::guest()){
 
                     $personas-> administrador = 0;

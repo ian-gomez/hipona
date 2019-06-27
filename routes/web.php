@@ -10,25 +10,29 @@
 | contains the "web" middleware group. Now create something great!
 |
 
-Route::get('/', function(){
-    return view('welcome');
-});
-
 */
-
-
-
+Route::resource('/', 'HomeController');
 
 Auth::routes();
 
-Route::get('registro', 'PersonaController@selectcategoria');
-Route::get('home', 'PersonaController@agregar');
-Route::get('/home', 'ListadoController@index')->name('home');
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::group(['middleware' => 'auth'], function() {
+	//Administrar jornadas
+	Route::resource('jornadas', 'JornadasController');
+	
+	//Configuración de jornadas
+    Route::get('configjornada/{id_jornada}', 'ConfigController@index');
+    Route::post('configjornada/guardar', 'ConfigController@update');
 
-Route::get('pdfPersonas', 'PersonaController@pdfGenerate');
-Route::get('exportarPdf', 'PersonaController@exportar');
-Route::post('inserta', 'PersonaController@agregar');
-Route::resource('Listado', 'ListadoController');
+	Route::get('registro', 'PersonaController@selectcategoria');
+	Route::get('home', 'PersonaController@agregar');
+	Route::get('/home', 'ListadoController@index')->name('home');
+	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+	Route::get('pdfPersonas', 'PersonaController@pdfGenerate');
+	Route::get('exportarPdf', 'PersonaController@exportar');
+	Route::post('inserta', 'PersonaController@agregar');
+	Route::resource('Listado', 'ListadoController');
+});
+
 
 

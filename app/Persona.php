@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Persona extends Model
 {
      protected $table = 'personas';
-     
-     protected $fillable = ['dni','nombre','apellido','email','edad','telefono','ciudadProcedencia','areaConocimiento','nivelEjerce','estudianteActual','categoria_id'];
+     protected $fillable = ['dni','nombre','apellido','email','edad','telefono','ciudad_procedencia','area_conocimiento','nivel_ejerce','estudiante_actual','categoria_id'];
+
+     public $timestamps = false;
 
      public function categoria(){
    		return	$this->belongsTo(Categoria::class);
      }
 
-	 
+
 	 static function validarEdad ($edad)
 	 {
 
@@ -37,7 +38,7 @@ class Persona extends Model
 	    if ($mesnac > $mes) {
 	   		 $ano=($ano-1);
 		}
-	 
+
 	    $edadusuario=($ano-$anonac);
 
 		return $edadusuario;
