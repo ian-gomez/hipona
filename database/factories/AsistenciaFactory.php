@@ -2,12 +2,16 @@
 
 /* @var $factory \Illuminate\Database\Eloquent\Factory */
 
-use App\Model;
+use App\Asistencia;
 use Faker\Generator as Faker;
 
-$factory->define(Model::class, function (Faker $faker) {
+$factory->define(Asistencia::class, function (Faker $faker) {
+    $jornada = App\Jornada::all()->random();
+    $total = $jornada->personas->count();
+    $total = $total-1;
+    $indice = random_int(0,$total);
     return [
-    	'jornada_id' => , # realizar correctamente la carga de datos
-        'persona_id' => , # en base a la relacion previamente definida
+        'jornada_id' => $jornada->id,
+        'persona_id' => $jornada->personas[$indice]->id,
     ];
 });
