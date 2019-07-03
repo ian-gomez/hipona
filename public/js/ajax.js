@@ -42,14 +42,20 @@ $(function() {
       });
 
       $('body').on('click', '.asistencias', function(){
-        $('#nombrejornada').html('test');
+        var jornada_id = $(this).data("id");
+
+        $.ajax({
+          type: 'GET',
+          url: 'jornadas/buscar/'+jornada_id,
+          dataType: 'json',
+          success: function(data){
+            $('#nombrejornada').html(data.titulo);
+          }
+        });
 
         $('#modal_asistencias').modal('show');
         $('.cargando').hide();
         $('.caja_resultados').hide();
-
-        var jornada_id = $(this).data("id");
-
 
         $('.btnbuscar').click(function(){
           $('.caja_resultados').hide();

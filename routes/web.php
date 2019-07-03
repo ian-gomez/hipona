@@ -18,6 +18,8 @@ Auth::routes();
 Route::group(['middleware' => 'auth'], function() {
 	//Administrar jornadas
 	Route::resource('jornadas', 'JornadasController');
+	Route::get('jornadas/buscar/{id_jornada}', 'JornadasController@buscar_nombre');
+
 	
 	//Configuración de jornadas
     Route::get('configjornada/{id_jornada}', 'ConfigController@index');

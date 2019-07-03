@@ -127,4 +127,9 @@ class JornadasController extends Controller
         $jornada = Jornada::find($id)->delete();
         DB::delete('DELETE FROM configuracion WHERE jornada_id = ?', [$id]);
     }
+
+    public function buscar_nombre($id_jornada){
+        $jornada = Jornada::where('id', $id_jornada)->first();
+        return response()->json(['titulo'=>$jornada->titulo]);
+    }
 }
