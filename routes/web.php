@@ -23,6 +23,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('configjornada/{id_jornada}', 'ConfigController@index');
     Route::post('configjornada/guardar', 'ConfigController@update');
 
+    //Asistencias
+    Route::get('asistencias/{id_jornada}/{dni}', 'AsistenciasController@index');
+
 	Route::get('registro', 'PersonaController@selectcategoria');
 	Route::get('home', 'PersonaController@agregar');
 	Route::get('/home', 'ListadoController@index')->name('home');

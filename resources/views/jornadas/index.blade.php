@@ -3,10 +3,12 @@
   <title>Administrar jornadas</title>
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">  
   <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+  <script src="{{ asset('js/ajax.js') }}"></script>
 </head>
 
 <style>
@@ -30,6 +32,8 @@
     <thead style="background-color: #e3ebff;">
         <tr>
           <td>Título</td>
+          <td>Inicia</td>
+          <td>Finaliza</td>
           <td>Acción</td>
         </tr>
     </thead>
@@ -57,16 +61,14 @@
             </div>
         </div>
     </div>
-</div>
+  </div>
 
-<div class="modal" id="modal_confirm" tabindex="-1" role="dialog">
+  <div class="modal" id="modal_confirm" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Confirmación</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="titulo_modal">Confirmación</h4>
       </div>
       <div class="modal-body">
         <p>Desea eliminar esta jornada?</p>
@@ -77,11 +79,56 @@
       </div>
     </div>
   </div>
-</div>
+  </div>
 
-<div>
+  <div class="modal" id="modal_asistencias" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="titulo_modal">Consultar <label id="nombrejornada"></label></h4>
+      </div>
+      <div class="modal-body">
+        <div class="input-group add-on">
+           <input class="form-control" placeholder="Buscar..." name="dni_s" id="dni_s" type="text">
+           <div class="input-group-btn">
+              <button class="btn btn-default btnbuscar" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+           </div>
+        </div>
+        <div class="cargando">
+          <center><img style="margin-top: 0.5cm;" src="img/ajax-loader.gif"></center>
+        </div>
+        <div class="caja_resultados">
+          <textarea id="resultados" name="resultados" style="margin-top: 0.5cm;" class="form-control" rows="5" readonly="true"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="modal fade" id="error_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"> <span aria-hidden="true" class="">×   </span><span class="sr-only">Cerrar</span></button>
+        <h4 class="modal-title" id="titulo_modal">ERROR</h4>
+      </div>
+      <div class="modal-body">
+        <div class="mensaje_error">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+
 <script>
-  $(function() {
       $('#table').DataTable({
           processing: true,
           serverSide: true,
@@ -101,72 +148,12 @@
           ajax: '{{ route('jornadas.index') }}',
           columns: [
             { data: 'titulo', name: 'titulo' },
+            { data: 'fecha_inicio', name: 'fecha_inicio' },
+            { data: 'fecha_fin', name: 'fecha_fin' },
             { data: 'accion', name:' accion'}
           ]
       });
-
-      $('body').on('click', '.editar', function(){
-        var jornada_id = $(this).data("id");
-        window.location.href = "{{ route('jornadas.index') }}"+'/'+jornada_id+'/edit';
-      });
-
-      $('body').on('click', '.eliminar', function(){
-        $('#modal_confirm').modal('show');
-        var jornada_id = $(this).data("id");
-        $('body').on('click', '.btneliminar', function(){
-          $.ajax({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type: "POST",
-            url: "jornadas/"+jornada_id,
-            data:   {
-              "jornada_id": jornada_id,
-              "_method": 'DELETE',
-            },
-            success: function () { 
-              alert("Jornada eliminada correctamente");
-              location.reload();
-            }
-          });
-        })
-      });
-
-      $('body').on('click', '.config', function(){
-        var jornada_id = $(this).data("id");
-        $.ajax({
-          type: "GET", 
-          url: 'configjornada/'+jornada_id,
-          dataType: 'json',
-          success: function(data){
-            $('#id_jornada').val(jornada_id);
-            $('#cantidad_asistencias').val(data[0].cantidad_asistencias);
-            $('#tolerancia').val(data[0].tolerancia);
-            $('#modal_config').modal('show');
-          }
-        });
-      });
-
-      $('body').on('click', '.btnguardar', function(){
-        if($('#cantidad_asistencias').val() != '' && $('#tolerancia').val() != ''){
-          $.ajax({
-            headers: {
-              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            type: "POST", 
-            url: 'configjornada/guardar',
-            data: "jornada_id="+ $('#id_jornada').val()+"&cantidad_asistencias="+$('#cantidad_asistencias').val()+"&tolerancia="+$('#tolerancia').val(),
-            success: function(){
-              $('#modal_config').modal('hide');
-            }
-          })
-        }else{
-          alert("Complete los campos");
-        }
-      })
-  });
 </script>
-</div>
 </div>
 </body>
 </html>
