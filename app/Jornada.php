@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jornada extends Model
 {
-	public $timestamps = false;
-	protected $table = "jornadas";
-	protected $fillable = ['titulo','ubicacion', 'fecha_inicio', 'fecha_fin'];
+    protected $table = 'jornadas';
+    protected $fillable = ['titulo', 'ubicacion', 'fecha_inicio', 'fecha_fin', 'estado'];
+
+    public $timestamps = false;
+
+    public function personas()
+    {
+    	return $this->belongsToMany('App\Persona', 'jornada_persona');
+    }
 }

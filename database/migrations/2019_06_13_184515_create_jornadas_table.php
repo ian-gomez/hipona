@@ -19,6 +19,7 @@ class CreateJornadasTable extends Migration
             $table->string('ubicacion');
             $table->dateTime('fecha_inicio');
             $table->dateTime('fecha_fin');
+            $table->boolean('estado')->default(0);
         });
     }
 

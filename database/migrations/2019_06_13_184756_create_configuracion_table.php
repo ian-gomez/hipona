@@ -14,9 +14,11 @@ class CreateConfiguracionTable extends Migration
     public function up()
     {
         Schema::create('configuracion', function (Blueprint $table) {
-            $table->bigInteger('jornada_id');
+            $table->bigInteger('jornada_id')->unsigned();
             $table->integer('cantidad_asistencias');
             $table->integer('tolerancia');
+
+            $table->foreign('jornada_id')->references('id')->on('jornadas');
         });
     }
 
