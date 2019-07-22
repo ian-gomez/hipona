@@ -13,6 +13,6 @@ class Jornada extends Model
 
     public function personas()
     {
-    	return $this->belongsToMany('App\Persona', 'Jornada_Persona');
+    	return $this->belongsToMany('App\Persona', 'jornada_persona');
     }
 }
