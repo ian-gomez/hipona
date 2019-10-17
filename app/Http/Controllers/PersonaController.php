@@ -42,7 +42,7 @@ class PersonaController extends Controller
                 if ($nivel == 'otro'){
                     $nivel = $request->otro;
                 }
-                $personas-> nivelEjerce = $nivel;
+                $personas-> nivel_ejerce = $nivel;
                 $personas-> email= $request->email;
                 if ($edadusuario >= $edadlimite){
                     $personas-> edad= $request->edad;
@@ -63,13 +63,6 @@ class PersonaController extends Controller
                 $personas-> area_conocimiento = $request->areaCon;
                 $personas-> ciudad_procedencia = $request->ciudadP;
                 $personas-> estudiante_actual = $request->estudianteActual;
-                if (\Auth::guest()){
-
-                    $personas-> administrador = 0;
-                }
-                else {
-                    $personas-> administrador = 1;
-                }
                 $personas->categoria_id= $request->categorias;
 
                 $personas->save();

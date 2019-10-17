@@ -100,8 +100,8 @@
                                         <hr class="style1">
                                         <b>Sos actualmente estudiante del Sedes/ docente del Sedes o Pío XII?</b>
                                         <select data-style="btn-primary"  name="estudianteActual" required>
-                                            <option value="Si">Si</option> 
-                                            <option value="No">No</option>
+                                            <option value="1">Si</option> 
+                                            <option value="0">No</option>
                                         </select>
                                         <hr class="style1">
                                         <button type= "submit" id="sub" name="nsubmit" class="btn btn-primary">Registrar</button>
@@ -121,7 +121,7 @@
                                 <th>Email</th>
                                 <th>Fecha de Nacimiento</th>
                                 <th>Teléfono</th> 
-                                <th>Administrador</th> 
+                                <th>Código</th> 
                                 <th>Modificar</th>
                                 <th>Eliminar</th> 
                             </tr>
@@ -135,11 +135,7 @@
                                 <td>{{ $Personas->email }}</td>
                                 <td>{{ $Personas->edad }}</td>
                                 <td>{{ $Personas->telefono }}</td>
-                                @if  (($Personas->administrador) == '1')
-                                <td>Si</td>
-                                @else
-                                <td>No</td>
-                                @endif
+                                <td> <img src="data:image/png;base64,{{DNS1D::getBarcodePNG(".$Personas->dni.", 'C39')}}" alt="barcode" /> </td>
                                 <td>                                   
                                     {{ Form::open(['route' => ['Listado.edit', $Personas->id], 'method' => 'get']) }} 
                                     <button  type="submit" name="modificar" style="font-size: 13px; background: transparent;" class=" btn btn-outline"> <i class="fas fa-edit"></i></button>
