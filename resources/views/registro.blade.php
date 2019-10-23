@@ -1,4 +1,3 @@
-
 <head>
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<script src="js\jquery.js" type="text/javascript"> </script>
@@ -11,93 +10,72 @@
 </head>
 
 <body background="img/fondo2.jpg">
+	@if(Session::has('mensaje_dni'))
+	<div class='alert alert-danger'> 
+		<p><strong>{!! Session::get('mensaje') !!}</strong></p>
+	</div>
+	@endif
+	
+	@if(Session::has('mensaje_correo'))
+	<div class='alert alert-danger'>
+		<p><strong>{!! Session::get('mensaje_correo') !!}</strong></p>
+	</div>
+	@endif
 
-								
-
-								@if(Session::has('mensaje_dni'))
-								  <div class='alert alert-danger'> 
-								    <p><strong>{!! Session::get('mensaje') !!}</strong></p>                                
-								  </div>
-								@endif
-
-								
-								@if(Session::has('mensaje_correo'))
-								  <div class='alert alert-danger'> 
-								    <p><strong>{!! Session::get('mensaje_correo') !!}</strong></p>         
-								  </div>
-								@endif
-
-								@if(Session::has('mensaje_edad'))
-								  <div class='alert alert-danger'> 
-								    <p><strong>{!! Session::get('mensaje_edad') !!}</strong></p>         
-								  </div>
-								@endif
-			 					
-
-
-								<form   action="{{url('/inserta')}}"  method="post" id="form1" class="form">
-			 					 
-			 					  
-			 					<div class="container-fluid">
-									<div class="row">
-									<div class="col-md-12" style="text-align: center; background-color:#3B579D;">
-						               	<a href="http://www.sedessapientiae.edu.ar/index-2.htm">
-						               		<img class="imagen" src="img/cabecera1.png" >
-						               	</a>					
-									</div>
-								</div>
-			 					
-
-
-
-			 					<br>
-
-			 					<div class="container">
-							      <div class="col-md-10 col-md-offset-1">
-							        
-							        <div class="form-row">
-							          <div class="form-group col-md-6">
-							            <div class="input-group">
-							         	<span class="input-group-addon"><i class="fas fa-user"></i></span>
-							            <input type="text" id="apellido" name="apellido" class="form-control"  placeholder="Apellidos"  required>
-							         	</div>
-							     </div>
-							          
-							         <div class="form-group col-md-6">
-							         	<div class="input-group">
-							         	<span class="input-group-addon"><i class="fas fa-user"></i></span>
-							            <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombres" required>
-							         	</div>
-							         </div>
-							        </div>
-							        
-							        <div class="form-row">
-							        <div class="form-group col-md-6">
-							         	<div class="input-group">
-							          		<span class="input-group-addon"><i class="fas fa-address-card"></i></span>
-							         	<input type="text" class="form-control" name="dni" id="dni" placeholder="Dni" required>
-							        	</div>
-							        </div>
-							        
-							        <div class="form-group col-md-6">
-							          	<div class="input-group">
-							          		<span class="input-group-addon"><i class="fas fa-envelope"></i></span>
-							          	<input type="email" class="form-control" name="email" id="email" placeholder="Correo electronico" required>
-							        	</div>
-							        </div>
-							        </div>
-							        
-							  
-					        		<!--<div class="form-row">
-							          <div class="form-group col-md-6">
-							            <div class="input-group">
-							            <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
-										<input type="date" class="form-control" name="edad" id="edad" placeholder="Edad" required>
-							            </div>
-							        </div>-->
-
-							        
-					        		<div class="form-row">
+	@if(Session::has('mensaje_edad'))
+	<div class='alert alert-danger'> 
+		<p><strong>{!! Session::get('mensaje_edad') !!}</strong></p>
+	</div>
+	@endif
+	
+	<form   action="{{url('/inserta')}}"  method="post" id="form1" class="form">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12" style="text-align: center; background-color:#3B579D;">
+					<a href="http://www.sedessapientiae.edu.ar/index-2.htm">
+						<img class="imagen" src="img/cabecera1.png">
+					</a>					
+				</div>
+			</div>
+			<br>
+			<div class="container">
+				<div class="col-md-10 col-md-offset-1">							        
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<div class="input-group">
+							    <span class="input-group-addon"><i class="fas fa-user"></i></span>
+							    <input type="text" id="apellido" name="apellido" class="form-control"  placeholder="Apellidos"  required>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fas fa-user"></i></span>
+								<input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombres" required>
+							</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fas fa-address-card"></i></span>
+								<input type="text" class="form-control" name="dni" id="dni" placeholder="Dni" required>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fas fa-envelope"></i></span>
+								<input type="email" class="form-control" name="email" id="email" placeholder="Correo electronico" required>
+							</div>
+						</div>
+					</div>		  
+					<!--<div class="form-row">
+						<div class="form-group col-md-6">
+							<div class="input-group">
+							    <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>
+								<input type="date" class="form-control" name="edad" id="edad" placeholder="Edad" required>
+							</div>
+						</div>-->
+					<div class="form-row">
 							            <div class="form-group col-md-6">
 								            <div class="input-group input-append date" id="">
 								               <span class="input-group-addon"><i class="fas fa-calendar-alt"></i></span>

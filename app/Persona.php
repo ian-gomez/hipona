@@ -9,17 +9,15 @@ class Persona extends Model
 {
      protected $table = 'personas';
      protected $fillable = ['dni','nombre','apellido','email','edad','telefono','ciudad_procedencia','area_conocimiento','nivel_ejerce','estudiante_actual','categoria_id'];
-
      public $timestamps = false;
 
-     public function categoria(){
-   		return	$this->belongsTo(Categoria::class);
+	 public function categoria()
+	 {
+		 return	$this->belongsTo(Categoria::class);
      }
-
 
 	 static function validarEdad ($edad)
 	 {
-
 		$fecha=$edad;
 
 	    $dia=date("d");
@@ -33,14 +31,12 @@ class Persona extends Model
 	    if (($mesnac == $mes) && ($dianac > $dia)) {
 	   		 $ano=($ano-1);
 		}
-
-
 	    if ($mesnac > $mes) {
 	   		 $ano=($ano-1);
 		}
-
-	    $edadusuario=($ano-$anonac);
-
+		
+		$edadusuario=($ano-$anonac);
+		
 		return $edadusuario;
 	}
 }
