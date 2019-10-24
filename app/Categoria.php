@@ -2,7 +2,6 @@
 
 namespace App;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 class Categoria extends Model
@@ -11,8 +10,8 @@ class Categoria extends Model
 
     public $timestamps = false;
 
-     public function persona()
-   {
-   		return $this->hashOne(Persona::class);
-   }
+    public function persona()
+    {
+        return $this->hashOne(Persona::class);
+    }
 }
