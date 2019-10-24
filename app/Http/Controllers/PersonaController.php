@@ -13,7 +13,7 @@ class PersonaController extends Controller
 {
     public function selectcategoria()
     {
-        $cat=categoria::pluck('descripcion','id');
+        $cat = Categoria::pluck('descripcion','id');
         return view ('inicio', compact($cat));
     }
 
