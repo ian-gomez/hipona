@@ -1,31 +1,20 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-
-*/
 Route::resource('/', 'HomeController');
 
 Auth::routes();
 
 Route::group(['middleware' => 'auth'], function() {
+	
 	//Administrar jornadas
 	Route::resource('jornadas', 'JornadasController');
 	Route::get('jornadas/buscar/{id_jornada}', 'JornadasController@buscar_nombre');
-
 	
 	//Configuración de jornadas
     Route::get('configjornada/{id_jornada}', 'ConfigController@index');
     Route::post('configjornada/guardar', 'ConfigController@update');
-
-    //Asistencias
+	
+	//Asistencias
     Route::get('asistencias/{id_jornada}/{dni}', 'AsistenciasController@index');
 
 	Route::get('registro', 'PersonaController@selectcategoria');
