@@ -35,7 +35,7 @@ class ConfigController extends Controller
     public function update(Request $request)
     {
         $config = Configuracion::where('jornada_id', $request->get('jornada_id'))->first();
-        $config->cantidad_asistencias = $request->get('cantidad_asistencias'); 
+        $config->cantidad_asistencias = $request->get('cantidad_asistencias');
         $config->tolerancia = $request->get('tolerancia');
         $config->save();
     }

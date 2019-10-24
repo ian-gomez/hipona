@@ -11,14 +11,14 @@ class ListadoController extends Controller
      public function __construct()
     {
         $this->middleware('auth');
-    } 
+    }
 
     public function index()
     {
         $cat=Categoria::pluck('descripcion','id');
         $per=persona::all();
 
-        return view ('home', compact('per','cat'));       
+        return view ('home', compact('per','cat'));
     }
 
     public function create()
@@ -40,7 +40,7 @@ class ListadoController extends Controller
     {
         $cat=categoria::pluck('descripcion','id');
         $Personas= Persona::find($id);
-        
+
         return view('edit', compact('Personas', 'cat'));
     }
 
@@ -50,7 +50,7 @@ class ListadoController extends Controller
         $Personas->fill($request->all());
         $Personas->save();
 
-        return redirect()->route('Listado.index'); 
+        return redirect()->route('Listado.index');
     }
 
     public function destroy($id)

@@ -4,39 +4,39 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class Persona extends Model
 {
-     protected $table = 'personas';
-     protected $fillable = ['dni','nombre','apellido','email','edad','telefono','ciudad_procedencia','area_conocimiento','nivel_ejerce','estudiante_actual','categoria_id'];
-     public $timestamps = false;
+    protected $table = 'personas';
+    protected $fillable = ['dni','nombre','apellido','email','edad','telefono','ciudad_procedencia','area_conocimiento','nivel_ejerce','estudiante_actual','categoria_id'];
 
-	 public function categoria()
-	 {
-		 return	$this->belongsTo(Categoria::class);
-     }
+    public $timestamps = false;
 
-	 static function validarEdad ($edad)
-	 {
-		$fecha=$edad;
+    public function categoria()
+    {
+        return	$this->belongsTo(Categoria::class);
+    }
 
-	    $dia=date("d");
-	    $mes=date("m");
-	    $ano=date("Y");
+    static function validarEdad ($edad)
+    {
+        $fecha=$edad;
 
-		$dianac=date("d",strtotime($fecha));
-	    $mesnac=date("m",strtotime($fecha));
-	    $anonac=date("Y",strtotime($fecha));
+        $dia=date("d");
+        $mes=date("m");
+        $ano=date("Y");
 
-	    if (($mesnac == $mes) && ($dianac > $dia)) {
-	   		 $ano=($ano-1);
-		}
-	    if ($mesnac > $mes) {
-	   		 $ano=($ano-1);
-		}
-		
-		$edadusuario=($ano-$anonac);
-		
-		return $edadusuario;
-	}
+        $dianac=date("d",strtotime($fecha));
+        $mesnac=date("m",strtotime($fecha));
+        $anonac=date("Y",strtotime($fecha));
+
+        if (($mesnac == $mes) && ($dianac > $dia)) {
+            $ano=($ano-1);
+        }
+        if ($mesnac > $mes) {
+            $ano=($ano-1);
+        }
+
+        $edadusuario=($ano-$anonac);
+
+        return $edadusuario;
+    }
 }

@@ -24,9 +24,9 @@ class PersonaController extends Controller
         $edadusuario=Persona::validarEdad($request->edad);
         $edadlimite=env('EDAD_LIMITE');
 
-        if($personas->count() == 0 ) { 
+        if($personas->count() == 0 ) {
             $personas=Persona::where('email',$request->email)->get();
-            if($personas->count() == 0 ) {   
+            if($personas->count() == 0 ) {
                 $personas= new Persona;
                 $personas->dni= $request->dni;
                 $personas->nombre= $request->nombre;
@@ -41,9 +41,9 @@ class PersonaController extends Controller
                     $personas->edad= $request->edad;
                 }
                 else {
-                    Session::flash('mensaje_edad', "El usuario debe ser mayor de ". $edadlimite . " años"); 
+                    Session::flash('mensaje_edad', "El usuario debe ser mayor de ". $edadlimite . " años");
                     if(\Auth::guest()) {
-                        return redirect ('registro'); 
+                        return redirect ('registro');
                     }
                     else {
                         return redirect ('home');
@@ -63,25 +63,25 @@ class PersonaController extends Controller
                     $m->from('formulario@sedessapientiae.com', 'Sedes Sapientiae');
                     $m->to($email, $nombre)->subject('Asunto del mensaje');
                     });*/
-                } 
-                catch (Exception $e) { 
-                    abort(303); 
+                }
+                catch (Exception $e) {
+                    abort(303);
                 }
                 return redirect('home');
         }
         else {
-            Session::flash('mensaje_correo', "El correo ya se encuentra registrado"); 
+            Session::flash('mensaje_correo', "El correo ya se encuentra registrado");
             return redirect ('registro');
         }
         else {
-            Session::flash('mensaje_dni', "El usuario ya se encuentra registrado"); 
+            Session::flash('mensaje_dni', "El usuario ya se encuentra registrado");
             return redirect ('registro');
         }
     }
 
     public function pdfGenerate (Request $request)
     {
-        #$personas = Persona::all(); 
+        #$personas = Persona::all();
         $personas = Persona::where('apellido',$request->filtrar)->get();
         $pdf = \PDF::loadView('pdfPersonas', compact('personas'));
         return $pdf->download('listadoPersonas.pdf');

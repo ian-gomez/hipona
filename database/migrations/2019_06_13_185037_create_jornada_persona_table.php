@@ -6,11 +6,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateJornadaPersonaTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('jornada_persona', function (Blueprint $table) {
@@ -22,11 +17,6 @@ class CreateJornadaPersonaTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('jornada_persona');
