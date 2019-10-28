@@ -17,14 +17,16 @@ Route::group(['middleware' => 'auth'], function() {
 	//Asistencias
     Route::get('asistencias/{id_jornada}/{dni}', 'AsistenciasController@index');
 
-	Route::get('registro', 'PersonaController@selectcategoria');
-	Route::get('home', 'PersonaController@agregar');
+	Route::resource('personas', 'PersonaController');
 	Route::get('/home', 'ListadoController@index')->name('home');
 	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
-
+	/*
+	Route::get('registro', 'PersonaController@selectcategoria');
+	Route::get('home', 'PersonaController@agregar');
 	Route::get('pdfPersonas', 'PersonaController@pdfGenerate');
 	Route::get('exportarPdf', 'PersonaController@exportar');
 	Route::post('inserta', 'PersonaController@agregar');
+	*/
 	Route::resource('Listado', 'ListadoController');
 });
 

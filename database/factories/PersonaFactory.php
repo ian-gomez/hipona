@@ -9,7 +9,7 @@ $factory->define(Persona::class, function (Faker $faker) {
         'nombre' => $faker->firstName,
         'apellido' => $faker->lastName,
         'email' => $faker->unique()->safeEmail,
-        'edad' => $faker->date('d/m/Y'),
+        'fecha_nacimiento' => $faker->date('d/m/Y'),
         'telefono' => $faker->phoneNumber(),
         'ciudad_procedencia' => $faker->state(),
         'area_conocimiento' => $faker->text(15),

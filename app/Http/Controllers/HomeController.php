@@ -9,8 +9,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $categorias = Categoria::pluck('descripcion','id');
-        return view("registro", compact('categorias'));
+        return view("welcome");
     }
 
     public function create()
