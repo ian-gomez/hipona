@@ -8,88 +8,59 @@
 
     <title>Sedes Sapientiae Jornada</title>
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
     <style>
-    html,
     body {
-        background-color: #fff;
-        color: #636b6f;
-        font-family: 'Raleway', sans-serif;
-        font-weight: 100;
-        height: 100vh;
+        background-color: #c8d9ff;
+    }
+
+    ul {
+        list-style-type: none;
         margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #8896d8;
     }
 
-    .full-height {
-        height: 100vh;
+    li {
+        float: left;
     }
 
-    .flex-center {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-    }
-
-    .position-ref {
-        position: relative;
-    }
-
-    .top-right {
-        position: absolute;
-        right: 10px;
-        top: 18px;
-    }
-
-    .content {
+    li a {
+        display: block;
+        color: white;
         text-align: center;
-    }
-
-    .title {
-        font-size: 84px;
-    }
-
-    .links>a {
-        color: #636b6f;
-        padding: 0 25px;
-        font-size: 12px;
-        font-weight: 600;
-        letter-spacing: .1rem;
+        padding: 14px 16px;
         text-decoration: none;
-        text-transform: uppercase;
     }
 
-    .m-b-md {
-        margin-bottom: 30px;
+    li a:hover {
+        background-color: #6685c7;
+    }
+
+    .active {
+        background-color: #4f4cb4;
+    }
+
+    .login {
+        float: right;
     }
     </style>
 </head>
 
 <body>
-    <div class="flex-center position-ref full-height">
+    <ul>
+        <li><a class="active" href="/">P&aacute;gina principal</a></li>
+        <li><a href="/personas/create">Inscripci&oacute;n</a></li>
+        <li><a href="#">Desarrolladores</a></li>
         @if (Route::has('login'))
-        <div class="top-right links">
             @if (Auth::check())
-            <a href="{{ url('/home') }}">Home</a>
+            <li class="login"><a href="{{ url('/home') }}">Home</a></li>
             @else
-            <a href="{{ url('/login') }}">Login</a>
-            <a href="{{ url('/register') }}">Register</a>
+            <li class="login"><a href="{{ url('/login') }}">Login</a></li>
+            <li class="login"><a href="{{ url('/register') }}">Register</a></li>
             @endif
-        </div>
         @endif
-
-        <div class="content">
-            <div class="title m-b-md">
-                Laravel - Sedes
-            </div>
-
-            <div class="links">
-                <a href="personas/create">Registro P&uacute;blico</a>>
-            </div>
-        </div>
-    </div>
+    </ul>
 </body>
 
 </html>

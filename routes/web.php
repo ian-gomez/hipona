@@ -14,10 +14,10 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('configjornada/{id_jornada}', 'ConfigController@index');
     Route::post('configjornada/guardar', 'ConfigController@update');
 	
+	Route::resource('personas', 'PersonaController');
 	//Asistencias
     Route::get('asistencias/{id_jornada}/{dni}', 'AsistenciasController@index');
 
-	Route::resource('personas', 'PersonaController');
 	Route::get('/home', 'ListadoController@index')->name('home');
 	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 	/*
