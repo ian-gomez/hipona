@@ -12,6 +12,11 @@ class HomeController extends Controller
         return view("welcome");
     }
 
+    public function desarrolladores()
+    {
+        return view("desarrolladores");
+    }
+
     public function create()
     {
         //

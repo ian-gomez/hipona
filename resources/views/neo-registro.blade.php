@@ -35,14 +35,16 @@
     }
 
     select {
-        width: 10%;
+        width: 50%;
         padding: 12px 12px;
+        margin: 8px 0;
+        display: inline-block;
         border: 1px solid #ccc;
         border-radius: 4px;
-        background-color: #f1f1f1;
+        box-sizing: border-box;
     }
 
-    ul {
+    nav ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
@@ -50,11 +52,11 @@
         background-color: #8896d8;
     }
 
-    li {
+    nav li {
         float: left;
     }
 
-    li a {
+    nav li a {
         display: block;
         color: white;
         text-align: center;
@@ -62,12 +64,16 @@
         text-decoration: none;
     }
 
-    li a:hover {
+    nav li a:hover {
         background-color: #6685c7;
     }
 
     .active {
         background-color: #4f4cb4;
+    }
+
+    .login {
+        float: right;
     }
     </style>
 </head>
@@ -77,7 +83,15 @@
         <ul>
             <li><a href="/">P&aacute;gina principal</a></li>
             <li><a class="active" href="/personas/create">Inscripci&oacute;n</a></li>
-            <li><a href="#">Desarrolladores</a></li>
+            <li><a href="/desarrolladores">Desarrolladores</a></li>
+            @if (Route::has('login'))
+            @if (Auth::check())
+            <li class="login"><a href="{{ url('/home') }}">Home</a></li>
+            @else
+            <li class="login"><a href="{{ url('/login') }}">Login</a></li>
+            <li class="login"><a href="{{ url('/register') }}">Register</a></li>
+            @endif
+            @endif
         </ul>
     </nav>
     @if ($errors->any())
@@ -88,7 +102,7 @@
     <form method="post" action="/personas">
         @csrf
         <label>Nombre(s): <br>
-            <input name="nombre" type="text" placeholder="Ingrese su(s) nombre(s)" required>
+            <input name="nombre" type="text" placeholder="Ingrese su(s) nombre(s)" required autofocus>
         </label><br>
 
         <label>Apellido(s): <br>
@@ -132,7 +146,7 @@
             </datalist>
         </label><br>
 
-        <label> Concurrir&aacute;s en condici&oacute;n de:
+        <label> Concurrir&aacute;s en condici&oacute;n de: <br>
             <select name="categoria_id">
                 @foreach($categorias as $categoria)
                 <option value="{{$categoria->id}}">{{$categoria->descripcion}}</option>
@@ -140,7 +154,7 @@
             </select>
         </label><br>
 
-        <label>&iquest;Actualmente cursas o sos docente en el instituto Sedes Sapientiae y/o P&iacute;o XII?
+        <label>&iquest;Actualmente cursas o sos docente en el instituto Sedes Sapientiae y/o P&iacute;o XII? <br>
             <select name="estudiante_actual" required>
                 <option value="1">Si</option>
                 <option value="0">No</option>
