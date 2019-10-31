@@ -61,14 +61,12 @@
                         <!--   {{ config('app.name', 'Sedes Sapientiae Jornada') }}-->
                         Jornada Sedes
                     </a>
-                    <a class="navbar-brand" href="{{ url('http://www.sedessapientiae.edu.ar/index-2.htm') }}">
-                        Instituto Sedes Sapientiae
-                    </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
+                    <li><a href="{{ url('http://www.sedessapientiae.edu.ar/index-2.htm') }}">Instituto Sedes Sapientiae</a></li>
                         @if (!Auth::guest())
                         <li><a href="/jornadas">Administrar jornadas</a></li>
                         @endif
