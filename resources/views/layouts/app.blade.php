@@ -57,9 +57,12 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('http://www.sedessapientiae.edu.ar/index-2.htm') }}">
+                    <a class="navbar-brand" href="{{ url('/') }}">
                         <!--   {{ config('app.name', 'Sedes Sapientiae Jornada') }}-->
                         Jornada Sedes
+                    </a>
+                    <a class="navbar-brand" href="{{ url('http://www.sedessapientiae.edu.ar/index-2.htm') }}">
+                        Instituto Sedes Sapientiae
                     </a>
                 </div>
 
