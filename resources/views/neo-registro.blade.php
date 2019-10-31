@@ -84,6 +84,7 @@
             <li><a href="/">P&aacute;gina principal</a></li>
             <li><a class="active" href="/personas/create">Inscripci&oacute;n</a></li>
             <li><a href="/desarrolladores">Desarrolladores</a></li>
+            <li><a href="http://www.sedessapientiae.edu.ar/index-2.htm">Instituto Sedes Sapientiae</a></li>
             @if (Route::has('login'))
             @if (Auth::check())
             <li class="login"><a href="{{ url('/home') }}">Home</a></li>
