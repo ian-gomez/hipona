@@ -4,6 +4,9 @@ Route::resource('/', 'HomeController');
 
 Auth::routes();
 
+Route::get('personas/create', ['as' => 'personas.create', 'uses' => 'PersonaController@create']);
+Route::get('desarrolladores', 'HomeController@desarrolladores');
+
 Route::group(['middleware' => 'auth'], function() {
 	
 	//Administrar jornadas
@@ -14,7 +17,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('configjornada/{id_jornada}', 'ConfigController@index');
     Route::post('configjornada/guardar', 'ConfigController@update');
 	
-	Route::resource('personas', 'PersonaController');
+	Route::resource('personas', 'PersonaController', ['except' => ['create']]);
 	//Asistencias
     Route::get('asistencias/{id_jornada}/{dni}', 'AsistenciasController@index');
 
