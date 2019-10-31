@@ -66,7 +66,7 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                    <li><a href="{{ url('http://www.sedessapientiae.edu.ar/index-2.htm') }}">Instituto Sedes Sapientiae</a></li>
+                        <li><a href="{{ url('http://www.sedessapientiae.edu.ar/index-2.htm') }}">Instituto Sedes Sapientiae</a></li>
                         @if (!Auth::guest())
                         <li><a href="/jornadas">Administrar jornadas</a></li>
                         @endif

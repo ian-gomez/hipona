@@ -174,8 +174,7 @@
                     "previous": "Anterior"
                 }
             },
-            ajax: '{{ route('
-            jornadas.index ') }}',
+            ajax: '{{ url('jornadas') }}',
             columns: [{
                     data: 'titulo',
                     name: 'titulo'
