@@ -1,11 +1,11 @@
 <?php
 
 Route::resource('/', 'HomeController');
+Route::get('desarrolladores', 'HomeController@desarrolladores');
+Route::get('personas/create', ['as' => 'personas.create', 'uses' => 'PersonaController@create']);
+Route::post('personas', ['as' => 'personas.store', 'uses' => 'PersonaController@store']);
 
 Auth::routes();
-
-Route::get('personas/create', ['as' => 'personas.create', 'uses' => 'PersonaController@create']);
-Route::get('desarrolladores', 'HomeController@desarrolladores');
 
 Route::group(['middleware' => 'auth'], function() {
 	
@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('configjornada/{id_jornada}', 'ConfigController@index');
     Route::post('configjornada/guardar', 'ConfigController@update');
 	
-	Route::resource('personas', 'PersonaController', ['except' => ['create']]);
+	Route::resource('personas', 'PersonaController', ['except' => ['create', 'store']]);
 	//Asistencias
     Route::get('asistencias/{id_jornada}/{dni}', 'AsistenciasController@index');
 
