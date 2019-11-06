@@ -95,81 +95,72 @@
             @endif
         </ul>
     </nav>
-    @if(session()->has('message'))
+    <main>
+        @if(session()->has('message'))
         {{ session()->get('message') }}
-    @endif
+        @endif
 
-    @if ($errors->any())
-    <p>Se han encontrado los siguientes errores en su intento de registro:</p>
-    <ul>
-        @foreach ($errors->all() as $error)
+        @if ($errors->any())
+        <p>Se han encontrado los siguientes errores en su intento de registro:</p>
+        <ul>
+            @foreach ($errors->all() as $error)
             <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-    @endif
-    <form method="post" action="/personas">
-        @csrf
-        <label>Nombre(s): <br>
-            <input name="nombre" type="text" required autofocus>
-        </label><br>
+            @endforeach
+        </ul>
+        @endif
+        <form method="post" action="/personas">
+            @csrf
+            <label for="nombre">Nombre(s):</label><br>
+            <input id="nombre" name="nombre" type="text" required autofocus><br>
 
-        <label>Apellido(s): <br>
-            <input name="apellido" type="text" required>
-        </label><br>
+            <label for="apellido">Apellido(s):</label><br>
+            <input id="apellido" name="apellido" type="text" required><br>
 
-        <label>DNI: <br>
-            <input name="dni" type="text" required>
-        </label><br>
+            <label for="dni">DNI:</label><br>
+            <input id="dni" name="dni" type="text" required><br>
 
-        <label>Correo electr&oacute;nico: <br>
-            <input name="email" type="email" required>
-        </label><br>
+            <label for="email">Correo electr&oacute;nico:</label><br>
+            <input id="email" name="email" type="email" required><br>
 
-        <label>Fecha de nacimiento: <br>
-            <input name="fecha_nacimiento" type="date" required>
-        </label><br>
+            <label for="fecha_nacimiento">Fecha de nacimiento:</label><br>
+            <input id="fecha_nacimiento" name="fecha_nacimiento" type="date" required><br>
 
-        <label>Tel&eacute;fono: <br>
-            <input name="telefono" type="text" placeholder="Ingrese su n&uacute;mero de tel&eacute;fono" required>
-        </label><br>
+            <label for="telefono">Tel&eacute;fono:</label><br>
+            <input id="telefono" name="telefono" type="text" required><br>
 
-        <label>Ciudad de procedencia: <br>
-            <input name="ciudad_procedencia" type="text" placeholder="Ingrese su ciudad de procedencia" required>
-        </label><br>
+            <label for="ciudad_procedencia">Ciudad de procedencia:</label><br>
+            <input id="ciudad_procedencia" name="ciudad_procedencia" type="text" required><br>
 
-        <label>&Aacute;rea de conocimiento: <br>
-            <input name="area_conocimiento" type="text" placeholder="Ingrese su &aacute;rea de conocimiento" required>
-        </label><br>
+            <label for="area_conocimiento">&Aacute;rea de conocimiento:</label><br>
+            <input id="area_conocimiento" name="area_conocimiento" type="text" required><br>
 
-        <label>Nivel en el que ejerce: <br>
-            <input name="nivel_ejerce" type="text" placeholder="Ingrese el nivel en el cu&aacute;l ejerce"
-                list="opciones" required>
+            <label for="nivel_ejerce">Nivel en el que ejerce:</label><br>
+            <input id="nivel_ejerce" name="nivel_ejerce" type="text" list="opciones" required>
             <datalist id="opciones">
                 <option value="Inicial">
                 <option value="Primario">
                 <option value="Secundario">
                 <option value="Terciario">
                 <option value="Universitario">
-            </datalist>
-        </label><br>
+            </datalist><br>
 
-        <label> Concurrir&aacute;s en condici&oacute;n de: <br>
-            <select name="categoria_id">
+            <label for="categoria_id">Concurrir&aacute;s en condici&oacute;n de:</label><br>
+            <select id="categoria_id" name="categoria_id">
                 @foreach($categorias as $categoria)
                 <option value="{{$categoria->id}}">{{$categoria->descripcion}}</option>
                 @endforeach
-            </select>
-        </label><br>
+            </select><br>
 
-        <label>&iquest;Actualmente cursas o sos docente en el instituto Sedes Sapientiae y/o P&iacute;o XII? <br>
-            <select name="estudiante_actual" required>
+            <label for="estudiante_actual">&iquest;Actualmente cursas o sos docente en el instituto Sedes Sapientiae y/o
+                P&iacute;o XII?</label><br>
+            <select id="estudiante_actual" name="estudiante_actual" required>
                 <option value="1">Si</option>
                 <option value="0">No</option>
-            </select>
-        </label><br>
+            </select><br>
 
-        <input type="submit" name="submit">
-    </form>
+            <input type="submit" name="submit">
+        </form>
+    </main>
 </body>
 
 </html>
