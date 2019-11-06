@@ -53,7 +53,7 @@ class PersonaController extends Controller
         $persona->estudiante_actual = $validatedRequest['estudiante_actual'];
         $persona->save();
 
-        return view('welcome');
+        return redirect()->back()->with('message', 'Usted se ha registrado con éxito');
     }
 
     public function show($id)

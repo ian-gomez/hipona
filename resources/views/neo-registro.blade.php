@@ -95,28 +95,34 @@
             @endif
         </ul>
     </nav>
+    @if(session()->has('message'))
+        {{ session()->get('message') }}
+    @endif
+
     @if ($errors->any())
-    @foreach ($errors->all() as $error)
-    <p>{{ $error }}</p>
-    @endforeach
+    <p>Se han encontrado los siguientes errores en su intento de registro:</p>
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+        @endforeach
+    </ul>
     @endif
     <form method="post" action="/personas">
         @csrf
         <label>Nombre(s): <br>
-            <input name="nombre" type="text" placeholder="Ingrese su(s) nombre(s)" required autofocus>
+            <input name="nombre" type="text" required autofocus>
         </label><br>
 
         <label>Apellido(s): <br>
-            <input name="apellido" type="text" placeholder="Ingrese su(s) apellido(s)" required>
+            <input name="apellido" type="text" required>
         </label><br>
 
         <label>DNI: <br>
-            <input name="dni" type="text" placeholder="Ingrese su DNI" required>
+            <input name="dni" type="text" required>
         </label><br>
 
         <label>Correo electr&oacute;nico: <br>
-            <input name="email" type="email" placeholder="Ingrese su direcci&oacute;n de correo electr&oacute;nico"
-                required>
+            <input name="email" type="email" required>
         </label><br>
 
         <label>Fecha de nacimiento: <br>
