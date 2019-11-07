@@ -20,6 +20,8 @@ Route::group(['middleware' => 'auth'], function() {
 	Route::resource('personas', 'PersonaController', ['except' => ['create', 'store']]);
 	//Asistencias
     Route::get('asistencias/{id_jornada}/{dni}', 'AsistenciasController@index');
+    Route::get('asistencias/{id_jornada}', 'AsistenciasController@edit');
+    Route::post('asistencias/cargar', 'AsistenciasController@store');
 
 	Route::get('/home', 'ListadoController@index')->name('home');
 	Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
