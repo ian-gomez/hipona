@@ -4,13 +4,13 @@
 
 @section('content')
 
-@if(session()->has('message'))
-{{ session()->get('message') }}
-@endif
-
 <center>
     <h1>Inscripci&oacute;n</h1>
 </center>
+
+@if(session()->has('message'))
+{{ session()->get('message') }}
+@endif
 
 @if ($errors->any())
 <p>Se han encontrado los siguientes errores en su intento de registro:</p>
