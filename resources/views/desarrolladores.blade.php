@@ -4,6 +4,10 @@
 
 @section('content')
 
+<center>
+    <h1>Desarrolladores</h1>
+</center>
+
 <p>Esta p&aacute;gina ha sido desarrollada por los alumnos de tercer a&ntilde;o de la carrera de "Tecnicatura
     Superior en An&aacute;lisis y Desarrollo de Software" para la c&aacute;tedra de Programaci&oacute;n III dada
     por el profesor Javier Parra.</p>

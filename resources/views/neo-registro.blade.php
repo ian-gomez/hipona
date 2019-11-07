@@ -8,6 +8,10 @@
 {{ session()->get('message') }}
 @endif
 
+<center>
+    <h1>Inscripci&oacute;n</h1>
+</center>
+
 @if ($errors->any())
 <p>Se han encontrado los siguientes errores en su intento de registro:</p>
 <ul>
