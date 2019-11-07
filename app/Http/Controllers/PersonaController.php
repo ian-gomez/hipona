@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Categoria;
 use App\Persona;
 use App\User;
+use App\Jornada;
+use App\Jornada_Persona;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 
@@ -20,7 +22,9 @@ class PersonaController extends Controller
     public function create()
     {
         $categorias = Categoria::all();
-        return view('neo-registro', compact('categorias'));
+        $jornadas = Jornada::all()->where('estado', 1);
+
+        return view('neo-registro', compact('categorias', 'jornadas'));
     }
 
     public function store(Request $request)
@@ -37,6 +41,7 @@ class PersonaController extends Controller
             'nivel_ejerce' => 'string|min:1|max:255|required',
             'categoria_id' => 'exists:categorias,id|required',
             'estudiante_actual' => 'boolean|required',
+            'jornada_id' => 'exists:jornadas,id|required',
         ]);
 
         $persona = new Persona();
@@ -52,6 +57,14 @@ class PersonaController extends Controller
         $persona->categoria_id = $validatedRequest['categoria_id'];
         $persona->estudiante_actual = $validatedRequest['estudiante_actual'];
         $persona->save();
+
+        $persona = Persona::where('dni', $validatedRequest['dni'])->first();
+        $jornada = Jornada::where('id', $validatedRequest['jornada_id'])->first();
+
+        $jornada_persona = new Jornada_Persona();
+        $jornada_persona->jornada_id = $jornada->id;
+        $jornada_persona->persona_id = $persona->id;
+        $jornada_persona->save();
 
         return redirect()->back()->with('message', 'Usted se ha registrado con éxito');
     }

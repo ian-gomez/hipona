@@ -22,6 +22,14 @@
 @endif
 <form method="post" action="/personas">
     @csrf
+    <label for="jornada_id">Seleccione la jornada activa a la cual inscribirse:</label><br>
+    <select id="jornada_id" name="jornada_id">
+        <option value="#">Seleccione una jornada</option>
+    @foreach($jornadas as $jornada)
+        <option value="{{$jornada->id}}">{{$jornada->titulo}}</option>
+    @endforeach
+    </select><br>
+
     <label for="nombre">Nombre(s):</label><br>
     <input id="nombre" name="nombre" type="text" required autofocus><br>
 
