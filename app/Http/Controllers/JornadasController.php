@@ -16,7 +16,7 @@ class JornadasController extends Controller
             return Datatables::of($jornadas)->addColumn('accion', function($row){
                 $boton = "<button data-id=".$row->id." class='btn btn-warning editar'>Editar</button>";
                 $boton = $boton." "."<button data-id=".$row->id." class='btn btn-info config' data-toggle='modal' data-target='#myModal'>Configuración</button>";
-                $boton = $boton." "."<button data-id=".$row->id." class='btn btn-primary asistencias'>Asistencias</button>";
+                $boton = $boton." "."<a href='/asistencias/".$row->id."'><button class='btn btn-primary asistencias'>Asistencias</button></a>";
                 $boton = $boton." "."<button data-id=".$row->id." class='btn btn-danger eliminar'>Eliminar</button>";
                 return $boton;
             })->rawColumns(['accion'])->make(true);

@@ -98,43 +98,6 @@
             </div>
         </div>
 
-        <div class="modal" id="modal_asistencias" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">
-                            <span aria-hidden="true" class="">X</span>
-                            <span class="sr-only">Cerrar</span>
-                        </button>
-                        <h4 class="modal-title" id="titulo_modal">Consultar <label id="nombrejornada"></label></h4>
-                    </div>
-
-                    <div class="modal-body">
-                        <div class="input-group add-on">
-                            <input class="form-control" placeholder="Buscar..." name="dni_s" id="dni_s" type="text">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default btnbuscar" type="submit"><i
-                                        class="glyphicon glyphicon-search"></i></button>
-                            </div>
-                        </div>
-
-                        <div class="cargando">
-                            <center><img style="margin-top: 0.5cm;" src="img/ajax-loader.gif"></center>
-                        </div>
-
-                        <div class="caja_resultados">
-                            <textarea id="resultados" name="resultados" style="margin-top: 0.5cm;" class="form-control"
-                                rows="5" readonly="true"></textarea>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="modal fade" id="error_modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
