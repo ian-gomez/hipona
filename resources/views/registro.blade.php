@@ -135,7 +135,7 @@
                     </div>
                     <hr class="style1">
                     <b>Concurriras en condicion de:</b>
-                    {{Form::select('categorias',$cat)}}
+                    {{Form::select('categorias', $categorias)}}
                     <hr class="style1">
                     <b>Sos actualmente estudiante del Sedes/ docente del Sedes o Pío XII?</b>
                     <select data-style="btn-light" name="estudianteActual" required>

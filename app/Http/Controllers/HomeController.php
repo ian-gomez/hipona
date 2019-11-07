@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Categoria;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        return("En mantenimiento");
+        return view("welcome");
+    }
+
+    public function desarrolladores()
+    {
+        return view("desarrolladores");
     }
 
     public function create()
